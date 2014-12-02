@@ -28,10 +28,7 @@ import threading
 import select
 import math
 
-if platform.platform().find("Linux-2")!=-1:
-	legacy_id=True
-else: 	
-	legacy_id=False
+legacy_id=True
 
 serial_ports = {
 	'D1' :  '/dev/ttyS2',
@@ -637,15 +634,15 @@ def pinname2kernelid(pinname):
 
 	offset=-1
 	if pinname[0:2]=="PA":
-		offset=32+0
+		offset=0
 	if pinname[0:2]=="PB":
-		offset=32+32
+		offset=32
 	if pinname[0:2]=="PC":
-		offset=32+64
+		offset=64
 	if pinname[0:2]=="PD":
-		offset=32+96
+		offset=96
 	if pinname[0:2]=="PE":
-		offset=32+128
+		offset=128
 
 	if offset!=-1:
 		return offset+int(pinname[2:4])
